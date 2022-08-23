@@ -14,6 +14,13 @@ public class User {
 	@GeneratedValue
 	private int sequenceID;
 	
+//	public User(int lID, String pass, int rID) {
+//		
+//		loginID = lID;
+//		password = pass;
+//		roleID = rID;
+//	}
+	
 
 	public int getLoginID() {
 		return loginID;
