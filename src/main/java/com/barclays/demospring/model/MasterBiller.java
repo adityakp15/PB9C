@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class MasterBillers {
+public class MasterBiller {
 	
 	@Id
 	private String billerCode;

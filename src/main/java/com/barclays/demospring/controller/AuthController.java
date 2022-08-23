@@ -26,7 +26,7 @@ public class AuthController {
 			
 			role = user.getRoleID();
 			
-			String body = "{roleID: {" + role + "}";
+			String body = "{roleID: " + role + "}";
 			
 			return new ResponseEntity<>(body, HttpStatus.OK);
 		}

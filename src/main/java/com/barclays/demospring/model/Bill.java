@@ -5,17 +5,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class RegisteredBillers {
+public class Bill {
 
+	@Id
+	private String bCode;
+	
 	@GeneratedValue
 	private int sequenceID;
 	
-	@Id
-	private String billerCode;
+	
+	
 	private int consumerNumber;
-	private int accountNumber;
-	private boolean autoPay;
-	private int autoPayLimit;
+	
+	private int amount;
+	private String dueDate;
+	private String status;
 	
 	public int getSequenceID() {
 		return sequenceID;
@@ -24,10 +28,10 @@ public class RegisteredBillers {
 		this.sequenceID = sequenceID;
 	}
 	public String getBillerCode() {
-		return billerCode;
+		return bCode;
 	}
 	public void setBillerCode(String billerCode) {
-		this.billerCode = billerCode;
+		this.bCode = billerCode;
 	}
 	public int getConsumerNumber() {
 		return consumerNumber;
@@ -35,25 +39,24 @@ public class RegisteredBillers {
 	public void setConsumerNumber(int consumerNumber) {
 		this.consumerNumber = consumerNumber;
 	}
-	public int getAccountNumber() {
-		return accountNumber;
+	public int getAmount() {
+		return amount;
 	}
-	public void setAccountNumber(int accountNumber) {
-		this.accountNumber = accountNumber;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
-	public boolean isAutoPay() {
-		return autoPay;
+	public String getDueDate() {
+		return dueDate;
 	}
-	public void setAutoPay(boolean autoPay) {
-		this.autoPay = autoPay;
+	public void setDueDate(String dueDate) {
+		this.dueDate = dueDate;
 	}
-	public int getAutoPayLimit() {
-		return autoPayLimit;
+	public String getStatus() {
+		return status;
 	}
-	public void setAutoPayLimit(int autoPayLimit) {
-		this.autoPayLimit = autoPayLimit;
+	public void setStatus(String status) {
+		this.status = status;
 	}
-	
 	
 	
 }
