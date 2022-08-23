@@ -13,6 +13,7 @@ public class Bills {
 	@Id
 	private String billerCode;
 	private int consumerNumber;
+	
 	private int amount;
 	private String dueDate;
 	private String status;

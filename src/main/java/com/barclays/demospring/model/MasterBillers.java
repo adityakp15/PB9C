@@ -22,5 +22,4 @@ public class MasterBillers {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
 }

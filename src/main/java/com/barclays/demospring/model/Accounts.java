@@ -12,8 +12,6 @@ public class Accounts {
 	private String name;
 	private String emailAddress;
 	private int currentBalance;
-	
-	@GeneratedValue
 	private int sequenceID;
 	
 	public int getAccountNumber() {

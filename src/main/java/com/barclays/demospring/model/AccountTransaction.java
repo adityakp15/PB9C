@@ -7,10 +7,10 @@ import javax.persistence.Id;
 @Entity
 public class AccountTransaction {
 
+	@Id
 	@GeneratedValue
 	private int sequenceID;
-
-	@Id
+	
 	private String date;
 	private int amount;
 	private int debitCredit;
