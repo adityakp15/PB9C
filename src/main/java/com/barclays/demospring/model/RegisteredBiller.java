@@ -7,10 +7,9 @@ import javax.persistence.Id;
 @Entity
 public class RegisteredBiller {
 
-	@GeneratedValue
+	@Id @GeneratedValue
 	private int sequenceID;
 	
-	@Id
 	private String bCode;
 	private int cNumber;
 	private int aNumber;

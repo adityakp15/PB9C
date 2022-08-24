@@ -7,7 +7,6 @@ import javax.persistence.Id;
 @Entity
 public class Bill {
 	@Id @GeneratedValue
-	
 	private int sequenceID;
 	
 	private String bCode;
