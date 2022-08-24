@@ -5,15 +5,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
 public class User {
+	
 	@Id
 	private int loginID;
 	
 	private String password;
 	private int roleID;
 	
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id	@GeneratedValue
 	private int sequenceID;
 	
 //	public User(int lID, String pass, int rID) {
@@ -49,5 +52,9 @@ public class User {
 		this.sequenceID = sequenceID;
 	}
 	
+	@Override
+	public String toString() {
+		return "User [loginID=" + loginID + ", roleID=" + roleID + ", sequenceID=" + sequenceID + "]";
+	}
 	
 }

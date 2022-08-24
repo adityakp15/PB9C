@@ -1,5 +1,7 @@
 package com.barclays.demospring.controller;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +56,9 @@ public class AuthController {
 			
 			return new ResponseEntity<>("Password length should be greater than 6 characters", HttpStatus.BAD_REQUEST);
 		}
+		
+		
+		System.out.println(user.getSequenceID());
 		
 		User afterReg = userRepo.save(user);
 		return new ResponseEntity<>(afterReg.toString(), HttpStatus.OK);

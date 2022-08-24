@@ -8,6 +8,7 @@ import javax.persistence.Id;
 public class Accounts {
 
 	@Id
+	@GeneratedValue()
 	private int accountNumber;
 	private String name;
 	private String emailAddress;
