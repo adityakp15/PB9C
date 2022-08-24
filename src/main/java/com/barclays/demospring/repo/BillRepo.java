@@ -8,6 +8,6 @@ import com.barclays.demospring.model.Bill;
 
 public interface BillRepo extends CrudRepository<Bill, Integer> {
 	
-	boolean existsByBCodeAndConsumerNumber(String bcode, int consumerNumber);
-//	Optional<Bill> findByBCodeAndConsumerNumber(String bcode, int consumerNumber);
+	boolean existsBybCodeAndConsumerNumber(String bCode, String consumerNumber);
+	Optional<Bill> findBybCodeAndConsumerNumber(String bCode, String consumerNumber);
 }

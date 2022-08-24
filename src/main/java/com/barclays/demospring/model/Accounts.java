@@ -7,6 +7,11 @@ import javax.persistence.Id;
 @Entity
 public class Accounts {
 
+	@Override
+	public String toString() {
+		return "Accounts [accountNumber=" + accountNumber + ", name=" + name + ", emailAddress=" + emailAddress
+				+ ", currentBalance=" + currentBalance + ", sequenceID=" + sequenceID + "]";
+	}
 	@Id @GeneratedValue
 	private int accountNumber;
 	private String name;

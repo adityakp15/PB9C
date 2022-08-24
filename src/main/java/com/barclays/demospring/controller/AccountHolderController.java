@@ -106,6 +106,10 @@ public class AccountHolderController {
 			
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}
+		if(cno == null) {
+			
+			return new ResponseEntity<>("Invalid Consumer ID", HttpStatus.NOT_FOUND);
+		}
 		
 		ConsumerNumber cnumber = new ConsumerNumber();
 		cnumber.setCno(cno);
@@ -124,7 +128,7 @@ public class AccountHolderController {
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}
 		
-		if(!billRepo.existsByBCodeAndConsumerNumber(biller.getbCode(), biller.getcNumber())) {
+		if(!billRepo.existsBybCodeAndConsumerNumber(biller.getbCode(), biller.getcNumber())) {
 			
 			return new ResponseEntity<>("Bill not found", HttpStatus.NOT_FOUND);
 		}		
