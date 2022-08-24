@@ -12,8 +12,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.barclays.demospring.model.Accounts;
+import com.barclays.demospring.model.Bill;
+import com.barclays.demospring.model.ConsumerNumber;
+import com.barclays.demospring.model.RegisteredBiller;
 import com.barclays.demospring.model.User;
 import com.barclays.demospring.repo.AccountsRepo;
+import com.barclays.demospring.repo.BillRepo;
+import com.barclays.demospring.repo.ConsumerNumberRepo;
+import com.barclays.demospring.repo.RegisteredBillerRepo;
 import com.barclays.demospring.repo.UserRepo;
 
 @RestController
@@ -25,11 +31,30 @@ public class AccountHolderController {
 	@Autowired
 	private AccountsRepo accRepo;
 	
+	@Autowired
+	private ConsumerNumberRepo consRepo;
+	
+	@Autowired
+	private BillRepo billRepo;
+	
+	@Autowired
+	private RegisteredBillerRepo regBillRepo;
+	
 //	@GetMapping("/acc/{loginID}/bills")
 //	public ResponseEntity<String> getBills(@PathVariable int loginID) {
 //		
 //		
 //	}
+
+	@GetMapping("acc/{loginID}/consumernumbers")
+	public ResponseEntity<String> getConsumerNumbers(@PathVariable int loginID) {
+		
+		if(!userRepo.existsById(loginID)) {
+			return new ResponseEntity<> ("User does not exist", HttpStatus.BAD_REQUEST);
+		}
+		
+		return new ResponseEntity<> (consRepo.findByLoginID(loginID).toString(), HttpStatus.OK);
+	}
 	
 	@GetMapping("/acc/{loginID}")
 	public ResponseEntity<String> getUser(@PathVariable int loginID){
@@ -72,5 +97,41 @@ public class AccountHolderController {
 		account.setCurrentBalance(2000);
 		
 		return new ResponseEntity<>(accRepo.save(account).toString(), HttpStatus.OK);
+	}
+	
+	@PostMapping("acc/{loginID}/consumernumber")
+	public ResponseEntity<String> addConsumerNumber(@PathVariable int loginID, String cno) {
+		
+		if(!userRepo.existsById(loginID)) {
+			
+			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+		}
+		
+		ConsumerNumber cnumber = new ConsumerNumber();
+		cnumber.setCno(cno);
+		cnumber.setLoginID(loginID);
+		
+		consRepo.save(cnumber);
+		
+		return new ResponseEntity<>("Successful", HttpStatus.OK);
+	}
+	
+	@PostMapping("acc/{loginID}/bills/register")
+	public ResponseEntity<String> registerBill(@RequestBody RegisteredBiller biller, @PathVariable int loginID){
+		
+		if(!userRepo.existsById(loginID)) {
+			
+			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+		}
+		
+		if(!billRepo.existsByBCodeAndConsumerNumber(biller.getbCode(), biller.getcNumber())) {
+			
+			return new ResponseEntity<>("Bill not found", HttpStatus.NOT_FOUND);
+		}		
+		
+		//insert in register
+		regBillRepo.save(biller);
+		
+		return new ResponseEntity<>("Registered", HttpStatus.OK);
 	}
 }
