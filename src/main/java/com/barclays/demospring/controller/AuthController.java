@@ -16,7 +16,7 @@ public class AuthController {
 	@Autowired
 	private UserRepo userRepo;
 
-	@PostMapping("/auth/login")
+	@PostMapping("/login")
 	public ResponseEntity<String> login(int loginID, String password) {
 		
 		User user  = userRepo.findById(loginID).orElse(new User());
@@ -34,7 +34,7 @@ public class AuthController {
 		return new ResponseEntity<>("Invalid Credentials", HttpStatus.BAD_REQUEST);
 	}
 	
-	@PostMapping("/auth/register")
+	@PostMapping("/register")
 	public ResponseEntity<String> register(User user) {
 		
 		//already exists

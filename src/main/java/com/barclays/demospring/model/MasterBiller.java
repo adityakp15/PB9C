@@ -22,4 +22,8 @@ public class MasterBiller {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "MasterBiller [billerCode=" + billerCode + ", name=" + name + "]";
+	}
 }
