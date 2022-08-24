@@ -6,20 +6,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Bill {
-
-	@Id
-	private String bCode;
+	@Id @GeneratedValue
 	
-	@GeneratedValue
 	private int sequenceID;
 	
+	private String bCode;
+	private String consumerNumber;
 	
-	
-	private int consumerNumber;
-	
-	private int amount;
+	private float amount;
 	private String dueDate;
 	private String status;
+//	paid, pending, failed
 	
 	public int getSequenceID() {
 		return sequenceID;
@@ -33,13 +30,13 @@ public class Bill {
 	public void setBillerCode(String billerCode) {
 		this.bCode = billerCode;
 	}
-	public int getConsumerNumber() {
+	public String getConsumerNumber() {
 		return consumerNumber;
 	}
-	public void setConsumerNumber(int consumerNumber) {
+	public void setConsumerNumber(String consumerNumber) {
 		this.consumerNumber = consumerNumber;
 	}
-	public int getAmount() {
+	public float getAmount() {
 		return amount;
 	}
 	public void setAmount(int amount) {
@@ -57,6 +54,4 @@ public class Bill {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
 }
