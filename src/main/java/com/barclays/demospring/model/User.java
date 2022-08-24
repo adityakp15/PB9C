@@ -2,16 +2,18 @@ package com.barclays.demospring.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
 	@Id
 	private int loginID;
+	
 	private String password;
 	private int roleID;
 	
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int sequenceID;
 	
 //	public User(int lID, String pass, int rID) {
