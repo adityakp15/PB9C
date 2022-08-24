@@ -39,8 +39,13 @@ public class Bill {
 	public float getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(float amount) {
 		this.amount = amount;
+	}
+	@Override
+	public String toString() {
+		return "Bill [sequenceID=" + sequenceID + ", bCode=" + bCode + ", consumerNumber=" + consumerNumber
+				+ ", amount=" + amount + ", dueDate=" + dueDate + ", status=" + status + "]";
 	}
 	public String getDueDate() {
 		return dueDate;
