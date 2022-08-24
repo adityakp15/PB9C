@@ -51,7 +51,4 @@ public class BillerController {
 		String body = "biller_code : "+id+", consumer_number : 1122, due_date : 24/08/2022, amount : 300";
 		return "redirect:/auth/biller/1";
 	}
-	
-	
-	
 }
