@@ -7,7 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Accounts {
 
-	@Id @GeneratedValue()
+	@Id @GeneratedValue
 	private int accountNumber;
 	private String name;
 	private String emailAddress;

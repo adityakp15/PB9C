@@ -8,33 +8,33 @@ import javax.persistence.Id;
 public class ConsumerNumber {
 
 	@Id @GeneratedValue
-	private int index;
-	private String consumerNumber;
+	private int cid;
+	private String cno;
+	
+	public String getCno() {
+		return cno;
+	}
+
+
+
+	public void setCno(String cno) {
+		this.cno = cno;
+	}
+
+
+
 	private int loginID;
 	
 	
 	public int getIndex() {
-		return index;
+		return cid;
 	}
 
 
 
 	public void setIndex(int index) {
-		this.index = index;
+		this.cid = index;
 	}
-
-
-
-	public String getConsumerNumber() {
-		return consumerNumber;
-	}
-
-
-
-	public void setConsumerNumber(String consumerNumber) {
-		this.consumerNumber = consumerNumber;
-	}
-
 
 
 	public int getLoginID() {
@@ -51,7 +51,7 @@ public class ConsumerNumber {
 
 	@Override
 	public String toString() {
-		return "ConsumerNumber [index=" + index + ", consumerNumber=" + consumerNumber + ", loginID=" + loginID + "]";
+		return "ConsumerNumber [index=" +cid + ", consumerNumber=" + cno + ", loginID=" + loginID + "]";
 	}
 	
 	

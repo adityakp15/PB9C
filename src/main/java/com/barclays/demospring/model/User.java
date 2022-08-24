@@ -9,8 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class User {
-	
-	@Id
+
 	private int loginID;
 	
 	private String password;

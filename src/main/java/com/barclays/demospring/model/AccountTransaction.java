@@ -7,8 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class AccountTransaction {
 
-	@Id
-	@GeneratedValue
+	@Id @GeneratedValue
 	private int sequenceID;
 	
 	private String date;
