@@ -1,6 +1,7 @@
 package com.barclays.demospring.repo;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
@@ -14,6 +15,6 @@ public interface RegisteredBillerRepo extends CrudRepository<RegisteredBiller, I
 
 	List<Object> findByaP(boolean ap);
 
-
+	Optional<RegisteredBiller> fingBybCodeAndcNumber(String bCode, String cNumber);
 
 }

@@ -138,4 +138,46 @@ public class AccountHolderController {
 		
 		return new ResponseEntity<>("Registered", HttpStatus.OK);
 	}
+	
+	@PostMapping("acc/{loginID}/bills/{bn}/{cn}/toggleautopay")
+	public ResponseEntity<String> toggleAutoPay(@PathVariable int loginID, @PathVariable String bn, @PathVariable String cn) {
+		
+		if(!userRepo.existsById(loginID)) {
+			
+			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+		}
+		
+		if(!billRepo.existsBybCodeAndConsumerNumber(bn, cn)) {
+			
+			return new ResponseEntity<>("Bill not found", HttpStatus.NOT_FOUND);
+		}		
+		
+		RegisteredBiller biller = regBillRepo.fingBybCodeAndcNumber(bn, cn).orElse(new RegisteredBiller());
+		
+		
+		biller.setaP(!biller.isaP());
+
+		return new ResponseEntity<>("Successfull, AutoPay: " + biller.isaP(), HttpStatus.OK);
+	}
+	
+	@PostMapping("acc/{loginID}/bills/{bn}/{cn}/setautopaylimit")
+	public ResponseEntity<String> setApLimit(@PathVariable int loginID, @PathVariable String bn, @PathVariable String cn, int apLimit) {
+		
+		if(!userRepo.existsById(loginID)) {
+			
+			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+		}
+		
+		if(!billRepo.existsBybCodeAndConsumerNumber(bn, cn)) {
+			
+			return new ResponseEntity<>("Bill not found", HttpStatus.NOT_FOUND);
+		}		
+		
+		RegisteredBiller biller = regBillRepo.fingBybCodeAndcNumber(bn, cn).orElse(new RegisteredBiller());
+		
+		
+		biller.setaPLimit(apLimit);
+
+		return new ResponseEntity<>("Successfull, AutoPayLimit: " + biller.getaPLimit(), HttpStatus.OK);
+	}
 }
