@@ -9,27 +9,22 @@ public class ConsumerNumber {
 
 	@Id @GeneratedValue
 	private int cid;
+	
 	private String cno;
+	
+	private int loginID;
 	
 	public String getCno() {
 		return cno;
 	}
 
-
-
 	public void setCno(String cno) {
 		this.cno = cno;
 	}
-
-
-
-	private int loginID;
-	
 	
 	public int getIndex() {
 		return cid;
 	}
-
 
 
 	public void setIndex(int index) {
