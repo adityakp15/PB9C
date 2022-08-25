@@ -7,14 +7,34 @@ import javax.persistence.Id;
 @Entity
 public class RegisteredBiller {
 
+	@Override
+	public String toString() {
+		return "sequenceID=" + sequenceID + ", bCode=" + bCode + ", cNumber=" + cNumber + ", aNumber="
+				+ aNumber + ", aP=" + aP + ", date=" + date + ", aPLimit=" + aPLimit;
+	}
+	
+	public int togetseqid() {
+		return sequenceID;
+	}
+	public String togetDate() {
+		return date;
+	}
 	@Id @GeneratedValue
 	private int sequenceID;
 	
 	private String bCode;
-	private int cNumber;
+	private String cNumber;
 	private int aNumber;
 	private boolean aP;
 	private int aPLimit;
+	private String date;
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
 	public int getSequenceID() {
 		return sequenceID;
 	}
@@ -27,10 +47,10 @@ public class RegisteredBiller {
 	public void setbCode(String bCode) {
 		this.bCode = bCode;
 	}
-	public int getcNumber() {
+	public String getcNumber() {
 		return cNumber;
 	}
-	public void setcNumber(int cNumber) {
+	public void setcNumber(String cNumber) {
 		this.cNumber = cNumber;
 	}
 	public int getaNumber() {

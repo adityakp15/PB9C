@@ -11,7 +11,7 @@ public class AccountTransaction {
 	private int sequenceID;
 	
 	private String date;
-	private int amount;
+	private float amount;
 	private int debitCredit;
 	private String description;
 	private int billReference;
@@ -28,10 +28,10 @@ public class AccountTransaction {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public int getAmount() {
+	public float getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 	public int getDebitCredit() {
