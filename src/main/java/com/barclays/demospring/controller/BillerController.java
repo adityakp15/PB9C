@@ -39,16 +39,17 @@ public class BillerController {
 	@PostMapping("biller/{bid}/req")
 	public ResponseEntity<String> BillerRequest(@PathVariable("bid") String id, @RequestBody RequestedBill rb){
 		rb.setStatus("pending");
+		rb.setbCode(id);
 		requestedBillsRepo.save(rb);
 		
-		String body = "biller_code : "+id+", consumer_number : 1122, due_date : 24/08/2022, amount : 300";
-		return new ResponseEntity<>(body, HttpStatus.OK);
+//		String body = "biller_code : "+id+", consumer_number : 1122, due_date : 24/08/2022, amount : 300";
+		return new ResponseEntity<>(rb.toString(), HttpStatus.OK);
 	}
 	
-	@PostMapping("biller/{bid}/reqs")
-	public String Billerredirect(@PathVariable("bid") String id){
-		
-		String body = "biller_code : "+id+", consumer_number : 1122, due_date : 24/08/2022, amount : 300";
-		return "redirect:/auth/biller/1";
-	}
+//	@PostMapping("biller/{bid}/reqs")
+//	public String Billerredirect(@PathVariable("bid") String id){
+//		
+//		String body = "biller_code : "+id+", consumer_number : 1122, due_date : 24/08/2022, amount : 300";
+//		return "redirect:/auth/biller/1";
+//	}
 }

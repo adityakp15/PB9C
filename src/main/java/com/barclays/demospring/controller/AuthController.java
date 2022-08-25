@@ -38,7 +38,7 @@ public class AuthController {
 	public ResponseEntity<String> register(User user) {
 		
 		//already exists
-		if(userRepo.existsById(user.getLoginID())) {
+		if(userRepo.existsByloginID(user.getLoginID())) {
 			
 			return new ResponseEntity<>("User exists", HttpStatus.BAD_REQUEST);
 		}

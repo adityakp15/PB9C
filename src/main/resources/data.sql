@@ -23,8 +23,8 @@ insert into master_biller values('B001','Airtel');
 insert into master_biller values('B002','Jio');
 insert into master_biller values('B003','TNEB');
 
-insert into bill values(1,1000,'C001','82208271','29-08-2022','pending');
-insert into bill values(2,1500,'C002','5000100','24-08-2022','approved');
+--insert into requested_bill (amount, due_date)values(1,1000,'C001','82208271','29-08-2022');
+--insert into requested_bill values(2,1500,'C002','5000100','24-08-2022');
 
 
 insert into registered_biller values(1,00002,true,2000,'C001','82208271','29-08-2022');

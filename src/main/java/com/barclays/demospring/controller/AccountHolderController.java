@@ -49,7 +49,7 @@ public class AccountHolderController {
 	@GetMapping("acc/{loginID}/consumernumbers")
 	public ResponseEntity<String> getConsumerNumbers(@PathVariable int loginID) {
 		
-		if(!userRepo.existsById(loginID)) {
+		if(!userRepo.existsByloginID(loginID)) {
 			return new ResponseEntity<> ("User does not exist", HttpStatus.BAD_REQUEST);
 		}
 		
@@ -58,11 +58,11 @@ public class AccountHolderController {
 	
 	@GetMapping("/acc/{loginID}")
 	public ResponseEntity<String> getUser(@PathVariable int loginID){
-		if(!userRepo.existsById(loginID)) {
+		if(!userRepo.existsByloginID(loginID)) {
 			return new ResponseEntity<> ("User does not exist",HttpStatus.BAD_REQUEST);
 		}
 
-		User user = userRepo.findById(loginID).orElse(new User());
+		User user = userRepo.findByloginID(loginID).orElse(new User());
 
 		return new ResponseEntity<> (user.toString(),HttpStatus.OK);
 
@@ -71,12 +71,12 @@ public class AccountHolderController {
 	@GetMapping("/acc/{loginID}/accounts")
 	public ResponseEntity<String> getAccounts(@PathVariable int loginID) {
 		
-		if(!userRepo.existsById(loginID)) {
+		if(!userRepo.existsByloginID(loginID)) {
 			
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}
 		
-		int seq = userRepo.findById(loginID).orElse(new User()).getSequenceID();
+		int seq = userRepo.findByloginID(loginID).orElse(new User()).getSequenceID();
 		
 		List<Accounts> acc = (List<Accounts>) accRepo.findBySequenceID(seq);
 		
@@ -86,12 +86,12 @@ public class AccountHolderController {
 	@PostMapping("/acc/{loginID}/newaccount")
 	public ResponseEntity<String> newAccount(@PathVariable int loginID ,@RequestBody Accounts account) {
 		
-		if(!userRepo.existsById(loginID)) {
+		if(!userRepo.existsByloginID(loginID)) {
 			
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}
 		
-		int seq = userRepo.findById(loginID).orElse(new User()).getSequenceID();
+		int seq = userRepo.findByloginID(loginID).orElse(new User()).getSequenceID();
 		
 		account.setSequenceID(seq);
 		account.setCurrentBalance(2000);
@@ -102,7 +102,7 @@ public class AccountHolderController {
 	@PostMapping("acc/{loginID}/consumernumber")
 	public ResponseEntity<String> addConsumerNumber(@PathVariable int loginID, String cno) {
 		
-		if(!userRepo.existsById(loginID)) {
+		if(!userRepo.existsByloginID(loginID)) {
 			
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}
@@ -122,8 +122,8 @@ public class AccountHolderController {
 	
 	@PostMapping("acc/{loginID}/bills/register")
 	public ResponseEntity<String> registerBill(@RequestBody RegisteredBiller biller, @PathVariable int loginID){
-		
-		if(!userRepo.existsById(loginID)) {
+
+		if(!userRepo.existsByloginID(loginID)) {
 			
 			return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
 		}

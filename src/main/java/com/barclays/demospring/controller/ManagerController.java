@@ -23,7 +23,7 @@ public class ManagerController {
   private RequestedBillsRepo requestedBillsRepo;
 	
 
-  @GetMapping("manager")
+  @GetMapping("manager/assign")
   public String managerhome()
   {
 	  
@@ -46,7 +46,6 @@ public class ManagerController {
 			  b.setDueDate(l.get(i).getDueDate());
 			  b.setStatus("Not Paid");
 			  l.get(i).setStatus("Approved");
-	       
 			 requestedBillsRepo.save(l.get(i));
 			  managerrepo.save(b);  
 		  }
@@ -58,11 +57,11 @@ public class ManagerController {
   
   
 	 
-	 @GetMapping("/manager/assign")
+	 @GetMapping("manager")
 	  public String managerdisplay()
 	 {
 		 
-	   return managerrepo.findAll().toString();  
+	   return requestedBillsRepo.findAll().toString();  
 	
 	 }
 	
